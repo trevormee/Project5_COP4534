@@ -46,5 +46,6 @@ void LCS::ReadTwoStrings(std::string fileName)
 */
 std::vector<std::vector<int>> LCS::PopulateCArray()
 {
-    
+    // USE SLIDE 20 from powerpoint to write this 
+    // Just get rid of b array stuff
 }
