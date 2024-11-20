@@ -38,3 +38,13 @@ void LCS::ReadTwoStrings(std::string fileName)
     //std::cout << "x == " << x << std::endl;
     //std::cout << "y == " << y << std::endl;
 }
+
+/*
+  @brief Populates the C Array (Part 1)
+
+  @return the populated C Array 
+*/
+std::vector<std::vector<int>> LCS::PopulateCArray()
+{
+    
+}
