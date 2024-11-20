@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++11 -Wall
 
 OBJS = main.o LCS.o
 
-proj4 : ${OBJS}
+proj5 : ${OBJS}
 		${CXX} $(CXXFLAGS) -o $@ ${OBJS}
 
  
@@ -12,3 +12,5 @@ LCS.o : LCS.hpp
 
 clean :
 		rm ${OBJS}
+
+.PHONY: all clean

@@ -7,11 +7,12 @@
 ***************************************************************/
 
 #include "LCS.hpp"
-#include <iostream>
 
 int main()
 {
-    std::cout << "Hello project 5" << std::endl;
+    LCS lcs;
+
+    lcs.ReadTwoStrings("SimpleTwoStrings.txt");
 
     return 0;
 }
