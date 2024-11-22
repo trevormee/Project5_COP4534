@@ -46,6 +46,61 @@ void LCS::ReadTwoStrings(std::string fileName)
 */
 std::vector<std::vector<int>> LCS::PopulateCArray()
 {
-    // USE SLIDE 20 from powerpoint to write this 
-    // Just get rid of b array stuff
+    int m = x.length();
+    int n = y.length();
+
+    //std::cout << "x length = " << m << std::endl;
+    //std::cout << "y length = " << n << std::endl;
+
+    cArray.resize(m + 1, std::vector<int>(n + 1, 0));
+
+    for(int i = 1; i < m; i++)
+    {
+        cArray[i][0] = 0;
+    }
+
+    for(int j = 0; j < n; j++)
+    {
+        cArray[0][j] = 0;
+    }
+
+    for(int i = 1; i < m; i++)
+    {
+        for(int j = 1; j < n; j++)
+        {
+            if(x.at(i) == y.at(j))  // Match
+            {
+                cArray[i][j] = cArray[i-1][j-1] + 1;
+            }
+            else    // No match
+            {
+                if(cArray[i-1][j] >= cArray[i][j-1])
+                {
+                    cArray[i][j] = cArray[i-1][j];
+                }
+                else
+                {
+                    cArray[i][j] = cArray[i][j-1];
+                }
+            }
+        }
+    }
+
+    std::cout << "cArray after population:" << std::endl;
+    for (int i = 0; i <= m; i++)
+    {
+        for (int j = 0; j <= n; j++)
+        {
+            std::cout << cArray[i][j] << " ";
+        }
+        std::cout << std::endl;  // Newline after each row
+    }
+
+    return cArray;
+}
+
+void LCS::RunPart1()
+{
+    ReadTwoStrings("SimpleTwoStrings.txt");
+    PopulateCArray();
 }

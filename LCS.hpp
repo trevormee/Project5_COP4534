@@ -21,7 +21,7 @@ class LCS
       std::vector<std::vector<int>> cArray;
       std::string x;
       std::string y;
-       
+      
     public:
       // Default Constructor
       LCS();

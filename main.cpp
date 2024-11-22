@@ -12,7 +12,8 @@ int main()
 {
     LCS lcs;
 
-    lcs.ReadTwoStrings("SimpleTwoStrings.txt");
+    //lcs.ReadTwoStrings("SimpleTwoStrings.txt");
+    lcs.RunPart1();
 
     return 0;
 }
