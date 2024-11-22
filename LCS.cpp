@@ -27,16 +27,10 @@ LCS::LCS()
 */
 void LCS::ReadTwoStrings(std::string fileName)
 {
-    //std::cout << "x = " << x << std::endl;
-    //std::cout << "y = " << y << std::endl;
-
     std::ifstream fileRead(fileName);
     std::getline(fileRead, x);
     std::getline(fileRead, y);
     fileRead.close();
-
-    //std::cout << "x == " << x << std::endl;
-    //std::cout << "y == " << y << std::endl;
 }
 
 /*
@@ -65,7 +59,7 @@ std::vector<std::vector<int>> LCS::PopulateCArray()
     {
         for(int j = 1; j <= n; j++)
         {
-            if(x.at(i - 1) == y.at(j - 1))  // Match
+            if(x.at(i - 1) == y.at(j - 1))  // match
             {
                 cArray[i][j] = cArray[i-1][j-1] + 1;
             }
@@ -77,12 +71,13 @@ std::vector<std::vector<int>> LCS::PopulateCArray()
                 }
                 else
                 {
-                    cArray[i][j] = cArray[i][j-1]; // ;eft
+                    cArray[i][j] = cArray[i][j-1]; // left
                 }
             }
         }
     }
 
+    /*
     std::cout << "cArray after population:" << std::endl;
     for (int i = 0; i <= m; i++)
     {
@@ -92,13 +87,62 @@ std::vector<std::vector<int>> LCS::PopulateCArray()
         }
         std::cout << std::endl; 
     }
+    */
 
     return cArray;
 }
 
+/*
+    @brief Finds and returns the lcs from the c array
 
+    @return the LCS string
+*/
+std::string LCS::PrintLCS()
+{
+    std::string lcs = "";
+    int i = x.length();
+    int j = y.length();
+
+    std::stack<char> s;
+
+    while(i > 0 && j > 0)
+    {
+        if(x.at(i-1) == y.at(j-1))  // match
+        {
+            s.push(x.at(i-1));
+            i = i - 1;
+            j = j - 1;
+        }
+        else if(cArray[i - 1][j] >= cArray[i][j-1]) // go up
+        {
+            i = i - 1;
+        }
+        else    // move left
+        {
+            j = j - 1;
+        }
+    }
+
+    while(!s.empty())
+    {
+        lcs += s.top();
+        s.pop();
+    }
+
+    return lcs;
+}
+
+/*
+    @brief Solves Part 1 of the project and prints 
+           out the lcs from two strings
+
+    @return N/A
+*/
 void LCS::RunPart1()
 {
-    ReadTwoStrings("SimpleTwoStrings.txt");
+    //ReadTwoStrings("SimpleTwoStrings.txt");
+    ReadTwoStrings("twoStrings.txt");
     PopulateCArray();
+    std::string lcs = PrintLCS();
+    std::cout << "LCS = " << lcs << std::endl;
 }
