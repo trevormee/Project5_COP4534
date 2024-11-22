@@ -49,26 +49,23 @@ std::vector<std::vector<int>> LCS::PopulateCArray()
     int m = x.length();
     int n = y.length();
 
-    //std::cout << "x length = " << m << std::endl;
-    //std::cout << "y length = " << n << std::endl;
-
     cArray.resize(m + 1, std::vector<int>(n + 1, 0));
 
-    for(int i = 1; i < m; i++)
+    for(int i = 1; i <= m; i++)
     {
         cArray[i][0] = 0;
     }
 
-    for(int j = 0; j < n; j++)
+    for(int j = 0; j <= n; j++)
     {
         cArray[0][j] = 0;
     }
 
-    for(int i = 1; i < m; i++)
+    for(int i = 1; i <= m; i++)
     {
-        for(int j = 1; j < n; j++)
+        for(int j = 1; j <= n; j++)
         {
-            if(x.at(i) == y.at(j))  // Match
+            if(x.at(i - 1) == y.at(j - 1))  // Match
             {
                 cArray[i][j] = cArray[i-1][j-1] + 1;
             }
@@ -76,11 +73,11 @@ std::vector<std::vector<int>> LCS::PopulateCArray()
             {
                 if(cArray[i-1][j] >= cArray[i][j-1])
                 {
-                    cArray[i][j] = cArray[i-1][j];
+                    cArray[i][j] = cArray[i-1][j];  // up
                 }
                 else
                 {
-                    cArray[i][j] = cArray[i][j-1];
+                    cArray[i][j] = cArray[i][j-1]; // ;eft
                 }
             }
         }
@@ -93,11 +90,12 @@ std::vector<std::vector<int>> LCS::PopulateCArray()
         {
             std::cout << cArray[i][j] << " ";
         }
-        std::cout << std::endl;  // Newline after each row
+        std::cout << std::endl; 
     }
 
     return cArray;
 }
+
 
 void LCS::RunPart1()
 {
