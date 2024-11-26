@@ -22,6 +22,9 @@ class LCS
       std::vector<std::vector<int>> cArray;
       std::string x;
       std::string y;
+
+      int numStrings;
+      std::vector<std::string> multiStringsVector;
       
     public:
       // Default Constructor
@@ -37,6 +40,9 @@ class LCS
       std::string PrintLCS();
 
       // Runs Part 1 of the Project
-      void RunPart1();    
+      void RunPart1();
+
+      // Reads in multiStrings.txt (Part 2)
+      void ReadMultiStrings(std::string fileName);    
 };
 #endif

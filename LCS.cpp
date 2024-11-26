@@ -146,3 +146,35 @@ void LCS::RunPart1()
     std::string lcs = PrintLCS();
     std::cout << "LCS = " << lcs << std::endl;
 }
+
+
+/*
+    @brief Reads in multiStrings.txt and extracts the 
+           number of sequences and each individual
+           sequence from the file
+    @param fileName: file to read from
+
+    @return N/A
+*/
+void LCS::ReadMultiStrings(std::string fileName)
+{
+    std::ifstream fileRead(fileName);
+
+    std::string numStringsString;
+    std::getline(fileRead, numStringsString);
+    numStrings = std::stoi(numStringsString);
+    
+    multiStringsVector.resize(numStrings);
+    for(int i = 0; i < numStrings; ++i)
+    {
+        std::getline(fileRead, multiStringsVector[i]);
+    }
+
+    fileRead.close();
+
+    std::cout << "Num strings -> " << numStrings << std::endl;
+    for(auto s : multiStringsVector)
+    {
+        std::cout << s << std::endl;
+    }
+}

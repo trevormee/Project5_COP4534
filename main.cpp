@@ -12,6 +12,7 @@ int main()
 {
     LCS lcs;
     lcs.RunPart1();
+    lcs.ReadMultiStrings("multiStrings.txt");
 
     return 0;
 }
