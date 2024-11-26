@@ -43,6 +43,15 @@ class LCS
       void RunPart1();
 
       // Reads in multiStrings.txt (Part 2)
-      void ReadMultiStrings(std::string fileName);    
+      void ReadMultiStrings(std::string fileName);
+
+      // Finds the LCS with optimized space approach
+      int FindLCSLength(std::string s1, std::string s2);
+
+      // Determines the similarity between two strings
+      char DetermineSimilarity(std::string s1, std::string s2);
+
+      // Runs Part 2 of the Project
+      void RunPart2();    
 };
 #endif

@@ -113,7 +113,7 @@ std::string LCS::PrintLCS()
             i = i - 1;
             j = j - 1;
         }
-        else if(cArray[i - 1][j] >= cArray[i][j-1]) // go up
+        else if(cArray[i - 1][j] >= cArray[i][j-1]) // move up
         {
             i = i - 1;
         }
@@ -177,4 +177,41 @@ void LCS::ReadMultiStrings(std::string fileName)
     {
         std::cout << s << std::endl;
     }
+}
+
+
+/*
+    @brief Determines the length of the LCS between two strings
+           using a space optimization appraoch
+*/
+int LCS::FindLCSLength(std::string s1, std::string s2)
+{
+    return 0;
+}
+
+/*
+    @brief Determines the similarity between two strings based
+           on criteria from project instructions
+    @param(s): s1: first string to compare
+               s2: second string to compare
+
+    @return a char (H, M, L, or D) depending on how similar two strings are
+*/
+char LCS::DetermineSimilarity(std::string s1, std::string s2)
+{
+    int s1Length = s1.length();
+    int s2Length = s2.length();
+
+    return 'a';
+} 
+
+
+/*
+    @brief
+
+    @return
+*/
+void RunPart2()
+{
+
 }
