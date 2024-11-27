@@ -18,6 +18,7 @@ LCS::LCS()
     y = "";
 }
 
+
 /*
   @brief Reads in text file and sets strings x and y to the 
          strings from the text file (Part 1)
@@ -32,6 +33,7 @@ void LCS::ReadTwoStrings(std::string fileName)
     std::getline(fileRead, y);
     fileRead.close();
 }
+
 
 /*
   @brief Populates the C Array (Part 1)
@@ -92,6 +94,7 @@ std::vector<std::vector<int>> LCS::PopulateCArray()
     return cArray;
 }
 
+
 /*
     @brief Finds and returns the lcs from the c array
 
@@ -132,6 +135,7 @@ std::string LCS::PrintLCS()
     return lcs;
 }
 
+
 /*
     @brief Solves Part 1 of the project and prints 
            out the lcs from two strings
@@ -140,7 +144,6 @@ std::string LCS::PrintLCS()
 */
 void LCS::RunPart1()
 {
-    //ReadTwoStrings("SimpleTwoStrings.txt");
     ReadTwoStrings("twoStrings.txt");
     PopulateCArray();
     std::string lcs = PrintLCS();
@@ -182,7 +185,11 @@ void LCS::ReadMultiStrings(std::string fileName)
 
 /*
     @brief Determines the length of the LCS between two strings
-           using a space optimization appraoch
+           using a space optimization approach
+    @param s1: first string to compare
+           s2: second string to compare
+
+    @return length of the LCS between two strings
 */
 int LCS::FindLCSLength(std::string& s1, std::string& s2)
 {
@@ -216,6 +223,7 @@ int LCS::FindLCSLength(std::string& s1, std::string& s2)
 
 }
 
+
 /*
     @brief Determines the similarity between two strings based
            on criteria from project instructions
@@ -224,10 +232,15 @@ int LCS::FindLCSLength(std::string& s1, std::string& s2)
 
     @return a char (H, M, L, or D) depending on how similar two strings are
 */
-char LCS::DetermineSimilarity(std::string s1, std::string s2)
+char LCS::DetermineSimilarity(std::string& s1, std::string& s2)
 {
     int s1Length = s1.length();
     int s2Length = s2.length();
+    int shorterStr = std::min(s1Length, s2Length);
+    int longerStr = std::max(s1Length, s2Length);
+
+    int lcsLength = FindLCSLength(s1, s2);
+    
 
     return 'a';
 } 
