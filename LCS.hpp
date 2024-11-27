@@ -46,7 +46,7 @@ class LCS
       void ReadMultiStrings(std::string fileName);
 
       // Finds the LCS with optimized space approach
-      int FindLCSLength(std::string s1, std::string s2);
+      int FindLCSLength(std::string& s1, std::string& s2);
 
       // Determines the similarity between two strings
       char DetermineSimilarity(std::string s1, std::string s2);

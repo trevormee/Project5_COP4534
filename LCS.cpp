@@ -184,9 +184,36 @@ void LCS::ReadMultiStrings(std::string fileName)
     @brief Determines the length of the LCS between two strings
            using a space optimization appraoch
 */
-int LCS::FindLCSLength(std::string s1, std::string s2)
+int LCS::FindLCSLength(std::string& s1, std::string& s2)
 {
-    return 0;
+    int m = s1.length(); 
+    int n = s2.length();
+
+    std::vector<int> dp(n + 1, 0);
+
+    for(int i = 1; i <= m; ++i)
+    {
+        int prev = dp[0];
+
+        for(int j = 1; j <= n; ++j)
+        {
+            int curr = dp[j];
+
+            if (s1[i - 1] == s2[j - 1])
+            {
+                dp[j] = 1 + prev;
+            }
+            else
+            {
+                dp[j] = std::max(dp[j - 1], dp[j]);
+            }
+
+            prev = curr;
+        }
+    }
+
+    return dp[n];
+
 }
 
 /*
