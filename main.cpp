@@ -17,15 +17,17 @@ int main()
     // Testing FindLCSLength()
     //std::string s1 = "AGGTAB";
     //std::string s2 = "GXTXAYB";
-    std::string s1 = "A";
-    std::string s2 = "G";
-    std::cout << lcs.FindLCSLength(s1, s2) << std::endl;
+    std::string s1 = "AACCTGAC";
+    std::string s2 = "AACCT";
+    //std::cout << lcs.FindLCSLength(s1, s2) << std::endl;
+    int lcsLen = lcs.FindLCSLength(s1, s2);
 
     // Testing DetermineSimilarity()
     int s1Length = s1.length();
     int s2Length = s2.length();
-    int shorter = std::min(s1Length, s2Length);
-    std::cout << shorter << std::endl;
+
+    char c = lcs.DetermineSimilarity(s1, s2, lcsLen);
+    std::cout << lcsLen << " " << c << std::endl;
 
 
     return 0;

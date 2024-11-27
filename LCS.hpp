@@ -50,7 +50,7 @@ class LCS
       int FindLCSLength(std::string& s1, std::string& s2);
 
       // Determines the similarity between two strings
-      char DetermineSimilarity(std::string& s1, std::string& s2);
+      char DetermineSimilarity(std::string& s1, std::string& s2, int lcsLength);
 
       // Runs Part 2 of the Project
       void RunPart2();    

@@ -232,17 +232,33 @@ int LCS::FindLCSLength(std::string& s1, std::string& s2)
 
     @return a char (H, M, L, or D) depending on how similar two strings are
 */
-char LCS::DetermineSimilarity(std::string& s1, std::string& s2)
+char LCS::DetermineSimilarity(std::string& s1, std::string& s2, int lcsLength)
 {
     int s1Length = s1.length();
     int s2Length = s2.length();
     int shorterStr = std::min(s1Length, s2Length);
     int longerStr = std::max(s1Length, s2Length);
 
-    int lcsLength = FindLCSLength(s1, s2);
-    
+    std::cout << "LCS Length: " << lcsLength << std::endl;
+    std::cout << "90% of Longer String: " << 0.90 * longerStr << std::endl;
+    std::cout << "10% of shorter String: " << 0.10 * shorterStr << std::endl;
 
-    return 'a';
+    if( (shorterStr >= 0.90 * longerStr) && (lcsLength >= 0.90 * shorterStr) )
+    {
+        return 'H';
+    }
+    else if( (shorterStr >= 0.80 * longerStr) && (lcsLength >= 0.80 * shorterStr) )
+    {
+        return 'M';
+    }
+    else if ( (shorterStr >= 0.60 * longerStr) && (lcsLength >= 0.50 * shorterStr) ) 
+    {
+        return 'L';
+    }
+    else 
+    {
+        return 'D';
+    }
 } 
 
 
