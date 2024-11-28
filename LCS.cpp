@@ -275,6 +275,14 @@ void LCS::SimilarityTable(std::vector<std::string>& multiStringsVector)
 
     for(int i = 0; i < tableSize; ++i)
     {
+        for(int j = 0; j < tableSize; ++j)
+        {
+            similarityTable[i][j] = '-';
+        }
+    }
+
+    for(int i = 0; i < tableSize; ++i)
+    {
         for(int j = i + 1; j < tableSize; ++j)
         {
             int lcsLength = FindLCSLength(multiStringsVector[i], multiStringsVector[j]);
@@ -282,6 +290,23 @@ void LCS::SimilarityTable(std::vector<std::string>& multiStringsVector)
         }
     }
 
+    std::cout << "  ";
+    for(int i = 0; i < tableSize; ++i)
+    {
+        std::cout << i << ' ';
+    }
+    std::cout << std::endl;
+
+    for(int i = 0; i < tableSize; ++i)
+    {
+        std::cout << i << ' ';
+        for(int j = 0; j < tableSize; ++j)
+        {
+            std::cout << similarityTable[i][j] << ' ';
+        }
+        std::cout << std::endl;
+    }
+    
 }
 
 
