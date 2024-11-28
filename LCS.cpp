@@ -173,13 +173,15 @@ void LCS::ReadMultiStrings(std::string fileName)
         std::getline(fileRead, multiStringsVector[i]);
     }
 
-    fileRead.close();
+    fileRead.close();   
 
     std::cout << "Num strings -> " << numStrings << std::endl;
+    /*
     for(auto s : multiStringsVector)
     {
         std::cout << s << std::endl;
     }
+    */
 }
 
 
@@ -225,8 +227,8 @@ int LCS::FindLCSLength(std::string& s1, std::string& s2)
 
 
 /*
-    @brief Determines the similarity between two strings based
-           on criteria from project instructions
+    @brief Determines the similarity between two strings based on criteria 
+           from project instructions
     @param(s): s1: first string to compare
                s2: second string to compare
 
@@ -259,11 +261,43 @@ char LCS::DetermineSimilarity(std::string& s1, std::string& s2, int lcsLength)
 
 
 /*
+    @brief Loops through all sequences found in multiStrings.txt and computes, populates
+           and prints the similarity table
+
+    @param multiStringsVector: vector containing strings from multiStrings.txt
+
+    @return M/A
+*/
+void LCS::SimilarityTable(std::vector<std::string>& multiStringsVector)
+{ 
+    int tableSize = numStrings;
+    char similarityTable[tableSize][tableSize];
+
+    for(int i = 0; i < tableSize; ++i)
+    {
+        for(int j = i + 1; j < tableSize; ++j)
+        {
+            int lcsLength = FindLCSLength(multiStringsVector[i], multiStringsVector[j]);
+            similarityTable[i][j] = DetermineSimilarity(multiStringsVector[i], multiStringsVector[j], lcsLength);
+        }
+    }
+
+}
+
+
+/*
     @brief
 
     @return
 */
-void RunPart2()
+void LCS::RunPart2()
 {
+    ReadMultiStrings("multiStrings.txt");
+    for(auto s : multiStringsVector)
+    {
+        std::cout << s << std::endl;
+    }
+
+    SimilarityTable(multiStringsVector);
 
 }

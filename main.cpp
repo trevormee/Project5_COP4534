@@ -13,10 +13,12 @@ int main()
     LCS lcs;
     //lcs.RunPart1();
     //lcs.ReadMultiStrings("multiStrings.txt");
+    lcs.RunPart2();
     
     // Testing FindLCSLength()
     //std::string s1 = "AGGTAB";
     //std::string s2 = "GXTXAYB";
+    /*
     std::string s1 = "AACCTGAC";
     std::string s2 = "AACCTGA";
     //std::cout << lcs.FindLCSLength(s1, s2) << std::endl;
@@ -28,6 +30,7 @@ int main()
 
     char c = lcs.DetermineSimilarity(s1, s2, lcsLen);
     std::cout << lcsLen << " " << c << std::endl;
+    */
 
 
     return 0;
