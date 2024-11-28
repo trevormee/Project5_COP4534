@@ -3,7 +3,12 @@
   File Name: LCS.hpp
   Project 5
 
-  @brief 
+  @brief Contains the function declarations for solving the 
+         longest common subsequence problems in two different
+         parts. Part 1 utilizes the entire c Array to compute
+         the LCS and print the original strings and LCS to the
+         console. Part 2 utilizes a space optimization approach
+         to constuct a similarity table for n number of strings.
 ***************************************************************/
 
 #ifndef LCS_HPP

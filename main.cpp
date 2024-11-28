@@ -3,7 +3,9 @@
   File Name: main.hpp
   Project 5
 
-  @brief 
+  @brief Contains the main function to run the program. This file
+         creates an instance of the LCS class and calls RunPart1()
+         and RunPart2() to display the results to the console
 ***************************************************************/
 
 #include "LCS.hpp"
@@ -11,27 +13,10 @@
 int main()
 {
     LCS lcs;
-    //lcs.RunPart1();
-    //lcs.ReadMultiStrings("multiStrings.txt");
+    std::cout << "Part 1..." << std::endl;
+    lcs.RunPart1();
+    std::cout << "\nPart 2..." << std::endl;
     lcs.RunPart2();
     
-    // Testing FindLCSLength()
-    //std::string s1 = "AGGTAB";
-    //std::string s2 = "GXTXAYB";
-    /*
-    std::string s1 = "AACCTGAC";
-    std::string s2 = "AACCTGA";
-    //std::cout << lcs.FindLCSLength(s1, s2) << std::endl;
-    int lcsLen = lcs.FindLCSLength(s1, s2);
-
-    // Testing DetermineSimilarity()
-    int s1Length = s1.length();
-    int s2Length = s2.length();
-
-    char c = lcs.DetermineSimilarity(s1, s2, lcsLen);
-    std::cout << lcsLen << " " << c << std::endl;
-    */
-
-
     return 0;
 }

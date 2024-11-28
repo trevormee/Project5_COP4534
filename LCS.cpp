@@ -3,7 +3,12 @@
   File Name: LCS.cpp
   Project 5
 
-  @brief 
+  @brief Contains the function declarations for solving the 
+         longest common subsequence problems in two different
+         parts. Part 1 utilizes the entire c Array to compute
+         the LCS and print the original strings and LCS to the
+         console. Part 2 utilizes a space optimization approach
+         to constuct a similarity table for n number of strings.
 ***************************************************************/
 
 #include "LCS.hpp"
@@ -65,7 +70,7 @@ std::vector<std::vector<int>> LCS::PopulateCArray()
             {
                 cArray[i][j] = cArray[i-1][j-1] + 1;
             }
-            else    // No match
+            else    // no match
             {
                 if(cArray[i-1][j] >= cArray[i][j-1])
                 {
@@ -78,18 +83,6 @@ std::vector<std::vector<int>> LCS::PopulateCArray()
             }
         }
     }
-
-    /*
-    std::cout << "cArray after population:" << std::endl;
-    for (int i = 0; i <= m; i++)
-    {
-        for (int j = 0; j <= n; j++)
-        {
-            std::cout << cArray[i][j] << " ";
-        }
-        std::cout << std::endl; 
-    }
-    */
 
     return cArray;
 }
@@ -147,7 +140,9 @@ void LCS::RunPart1()
     ReadTwoStrings("twoStrings.txt");
     PopulateCArray();
     std::string lcs = PrintLCS();
-    std::cout << "LCS = " << lcs << std::endl;
+    std::cout << "String 1: " << x << std::endl;
+    std::cout << "String 2: " << y << std::endl;
+    std::cout << "LCS: " << lcs << std::endl;
 }
 
 
@@ -174,14 +169,6 @@ void LCS::ReadMultiStrings(std::string fileName)
     }
 
     fileRead.close();   
-
-    std::cout << "Num strings -> " << numStrings << std::endl;
-    /*
-    for(auto s : multiStringsVector)
-    {
-        std::cout << s << std::endl;
-    }
-    */
 }
 
 
@@ -273,6 +260,7 @@ void LCS::SimilarityTable(std::vector<std::string>& multiStringsVector)
     int tableSize = numStrings;
     char similarityTable[tableSize][tableSize];
 
+    // Initialize similarity table with '-' for readability
     for(int i = 0; i < tableSize; ++i)
     {
         for(int j = 0; j < tableSize; ++j)
@@ -281,6 +269,7 @@ void LCS::SimilarityTable(std::vector<std::string>& multiStringsVector)
         }
     }
 
+    // Populate the similarity table
     for(int i = 0; i < tableSize; ++i)
     {
         for(int j = i + 1; j < tableSize; ++j)
@@ -290,6 +279,7 @@ void LCS::SimilarityTable(std::vector<std::string>& multiStringsVector)
         }
     }
 
+    // Print the similarity table 
     std::cout << "  ";
     for(int i = 0; i < tableSize; ++i)
     {
@@ -306,23 +296,17 @@ void LCS::SimilarityTable(std::vector<std::string>& multiStringsVector)
         }
         std::cout << std::endl;
     }
-    
 }
 
 
 /*
-    @brief
+    @brief Solves Part 2 of the project and prints the 
+           similarity table
 
-    @return
+    @return N/A
 */
 void LCS::RunPart2()
 {
     ReadMultiStrings("multiStrings.txt");
-    for(auto s : multiStringsVector)
-    {
-        std::cout << s << std::endl;
-    }
-
     SimilarityTable(multiStringsVector);
-
 }
