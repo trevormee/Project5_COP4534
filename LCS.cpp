@@ -238,11 +238,7 @@ char LCS::DetermineSimilarity(std::string& s1, std::string& s2, int lcsLength)
     int s2Length = s2.length();
     int shorterStr = std::min(s1Length, s2Length);
     int longerStr = std::max(s1Length, s2Length);
-
-    std::cout << "LCS Length: " << lcsLength << std::endl;
-    std::cout << "90% of Longer String: " << 0.90 * longerStr << std::endl;
-    std::cout << "10% of shorter String: " << 0.10 * shorterStr << std::endl;
-
+    
     if( (shorterStr >= 0.90 * longerStr) && (lcsLength >= 0.90 * shorterStr) )
     {
         return 'H';

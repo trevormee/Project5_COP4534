@@ -18,7 +18,7 @@ int main()
     //std::string s1 = "AGGTAB";
     //std::string s2 = "GXTXAYB";
     std::string s1 = "AACCTGAC";
-    std::string s2 = "AACCT";
+    std::string s2 = "AACCTGA";
     //std::cout << lcs.FindLCSLength(s1, s2) << std::endl;
     int lcsLen = lcs.FindLCSLength(s1, s2);
 
