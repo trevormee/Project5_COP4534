@@ -28,7 +28,6 @@ class LCS
       std::vector<std::vector<int>> cArray;
       std::string x;
       std::string y;
-
       int numStrings;
       std::vector<std::string> multiStringsVector;
       
@@ -57,6 +56,7 @@ class LCS
       // Determines the similarity between two strings
       char DetermineSimilarity(std::string& s1, std::string& s2, int lcsLength);
 
+      // Populates and prints the similarity table
       void SimilarityTable(std::vector<std::string>& multiStringsVector);
 
       // Runs Part 2 of the Project

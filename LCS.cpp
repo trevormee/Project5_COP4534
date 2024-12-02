@@ -253,7 +253,7 @@ char LCS::DetermineSimilarity(std::string& s1, std::string& s2, int lcsLength)
 
     @param multiStringsVector: vector containing strings from multiStrings.txt
 
-    @return M/A
+    @return N/A
 */
 void LCS::SimilarityTable(std::vector<std::string>& multiStringsVector)
 { 
